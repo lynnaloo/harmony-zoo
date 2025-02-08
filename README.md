@@ -10,26 +10,25 @@ Take an exciting journey through the Azure Zoo, where we'll explore the fascinat
 * Azure Logic Apps: Automate workflows, such as sending ticket confirmation emails, updating exhibit information, and notifying visitors about special events or feeding times.
 * Azure Functions: Use serverless functions to handle specific tasks, like calculating visitor capacity or generating personalized recommendations for exhibits based on visitor preferences.
 
-## Integration Flow
+## Use-cases
 
-* Ticket Purchase: A visitor purchases a ticket through a web or mobile app, which sends a message to Azure Service Bus.
-* Visitor Management: The visitor management system picks up the message and processes the ticket purchase. This includes checking visitor capacity, generating a digital ticket, and updating the visitor count.
-* Event Handling: Azure Event Grid triggers events for ticket purchases, animal feeding times, and exhibit updates. These events are handled by various services, such as updating exhibit information and notifying visitors about special events.
-* API Management: Expose APIs for ticket booking, exhibit information, and visitor feedback, allowing visitors to access real-time information and provide feedback through mobile apps.
-* Automation: Use Azure Logic Apps to automate tasks like sending ticket confirmation emails, updating exhibit information, and notifying visitors about special events or feeding times.
+### Managing Visitor Tickets and Providing Real-Time Updates on Exhibit Information:
 
-## AI Integrations
+* Web/Mobile App: Visitors can buy tickets and get real-time updates on exhibits.
+* API Management: API Gateway manages API requests for ticket booking and exhibit information.
+* Service Bus: Message Broker handles ticketing information.
+* Visitor Management Service (Azure Container App): Interacts with exhibits and ticketing services to provide real-time updates.
+* Cosmos DB: Stores data related to exhibits and ticketing.
+* Event Handlers: Manage activities, exhibits, and notifications.
 
-Integrating Azure AI services, specifically large language models (LLMs), into the Zoo Visitor Experience Enhancement System adds significant value by providing personalized and intelligent interactions for visitors:
+### Offering Interactive Support Through AI Chat Agents While Managing Events/Notifications:
 
-* Personalized Visitor Assistance
-Use Azure OpenAI Service to create a virtual assistant that can interact with visitors through a chatbot on the zoo's mobile app or website. The virtual assistant can answer questions about the zoo, provide information about exhibits, suggest personalized itineraries based on visitor preferences, and even assist with ticket bookings.
+* ChatAgent (Semantic Kernel + Azure OpenAI): Assists visitors with FAQs and provides interactive support.
+* Event Grid: Event broker pushes events to event handlers for activities, exhibits, and notifications.
+* Azure Functions: Handle specific tasks like calculating visitor capacity or generating personalized recommendations.
+* Azure Logic Apps: Automate workflows such as sending ticket confirmation emails and updating exhibit information.
 
-* Real-Time Language Translation
-Implement Azure Cognitive Services Translator to provide real-time translation of exhibit information, signs, and announcements. This can enhance the experience for international visitors by allowing them to access information in their preferred language.
+## Reference Architecture
 
-* Sentiment Analysis for Visitor Feedback
-Use Azure Cognitive Services Text Analytics to analyze visitor feedback and reviews. By performing sentiment analysis, you can gain insights into visitor satisfaction and identify areas for improvement. This can help the zoo management make data-driven decisions to enhance the visitor experience.
+<img width="1000" alt="Screenshot 2025-02-07 at 4 08 18 PM" src="https://github.com/user-attachments/assets/b7445546-02b8-45da-b285-7ee61484ef91" />
 
-* Intelligent Recommendations
-Leverage Azure Machine Learning to build recommendation models that suggest exhibits, events, and activities to visitors based on their interests and past behavior. For example, if a visitor shows interest in marine life, the system can recommend visiting the aquarium section and notify them about upcoming feeding times for marine animals.
