@@ -1,0 +1,66 @@
+@page "/ticket-purchase"
+@using System.Net.Http
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h3>Purchase Tickets</h3>
+
+<EditForm Model="@ticket" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label for="name">Name:</label>
+        <InputText id="name" @bind-Value="ticket.Name" />
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <InputText id="email" @bind-Value="ticket.Email" />
+    </div>
+    <div>
+        <label for="ticketType">Ticket Type:</label>
+        <InputSelect id="ticketType" @bind-Value="ticket.TicketType">
+            <option value="Adult">Adult</option>
+            <option value="Child">Child</option>
+            <option value="Senior">Senior</option>
+        </InputSelect>
+    </div>
+    <div>
+        <label for="quantity">Quantity:</label>
+        <InputNumber id="quantity" @bind-Value="ticket.Quantity" />
+    </div>
+    <button type="submit">Purchase</button>
+</EditForm>
+
+@if (confirmationMessage != null)
+{
+    <p>@confirmationMessage</p>
+}
+
+@code {
+    private Ticket ticket = new Ticket();
+    private string confirmationMessage;
+
+    private async Task HandleValidSubmit()
+    {
+        // Make REST request to API Gateway
+        var response = await Http.PostAsJsonAsync("https://api-gateway-url/tickets", ticket);
+        if (response.IsSuccessStatusCode)
+        {
+            confirmationMessage = "Ticket purchased successfully!";
+        }
+        else
+        {
+            confirmationMessage = "Failed to purchase ticket. Please try again.";
+        }
+    }
+
+    public class Ticket
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string TicketType { get; set; }
+        public int Quantity { get; set; }
+    }
+}

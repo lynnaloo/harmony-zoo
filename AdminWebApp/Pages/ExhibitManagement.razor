@@ -1,0 +1,57 @@
+@page "/exhibit-management"
+@using System.Net.Http
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h3>Exhibit Management</h3>
+
+<EditForm Model="@exhibit" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label for="name">Exhibit Name:</label>
+        <InputText id="name" @bind-Value="exhibit.Name" />
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <InputText id="description" @bind-Value="exhibit.Description" />
+    </div>
+    <div>
+        <label for="location">Location:</label>
+        <InputText id="location" @bind-Value="exhibit.Location" />
+    </div>
+    <button type="submit">Update Exhibit</button>
+</EditForm>
+
+@if (confirmationMessage != null)
+{
+    <p>@confirmationMessage</p>
+}
+
+@code {
+    private Exhibit exhibit = new Exhibit();
+    private string confirmationMessage;
+
+    private async Task HandleValidSubmit()
+    {
+        // Mock API call
+        var response = await Http.PostAsJsonAsync("https://mockapi/updateExhibit", exhibit);
+        if (response.IsSuccessStatusCode)
+        {
+            confirmationMessage = "Exhibit updated successfully!";
+        }
+        else
+        {
+            confirmationMessage = "Failed to update exhibit. Please try again.";
+        }
+    }
+
+    public class Exhibit
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Location { get; set; }
+    }
+}

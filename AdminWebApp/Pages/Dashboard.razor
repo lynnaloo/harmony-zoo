@@ -1,0 +1,39 @@
+@page "/dashboard"
+@using System.Net.Http
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h3>Admin Dashboard</h3>
+
+<div class="dashboard-overview">
+    <p>Total Visitors: @totalVisitors</p>
+    <p>Tickets Sold: @ticketsSold</p>
+</div>
+
+<div class="quick-access-buttons">
+    <button @onclick="NavigateToExhibitManagement">Manage Exhibits</button>
+    <button @onclick="NavigateToTicketManagement">Manage Tickets</button>
+</div>
+
+@code {
+    private int totalVisitors;
+    private int ticketsSold;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Mock API calls to get statistics
+        totalVisitors = await Http.GetFromJsonAsync<int>("https://mockapi/totalVisitors");
+        ticketsSold = await Http.GetFromJsonAsync<int>("https://mockapi/ticketsSold");
+    }
+
+    private void NavigateToExhibitManagement()
+    {
+        Navigation.NavigateTo("/exhibit-management");
+    }
+
+    private void NavigateToTicketManagement()
+    {
+        Navigation.NavigateTo("/ticket-management");
+    }
+}
