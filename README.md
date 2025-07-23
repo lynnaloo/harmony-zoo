@@ -30,5 +30,5 @@ timely updates about feeding times, exhibit changes, and upcoming events through
 * Azure Logic Apps: Automate workflows such as sending ticket confirmation emails and updating exhibit information.
 
 ## Reference Architecture
+<img width="1086" height="624" alt="Screenshot 2025-07-23 at 12 38 32 PM" src="https://github.com/user-attachments/assets/af00223a-6599-4bbc-b1b0-7a5a651b8866" />
 
-<img width="1000" alt="Screenshot 2025-02-07 at 4 08 18 PM" src="https://github.com/user-attachments/assets/b7445546-02b8-45da-b285-7ee61484ef91" />
