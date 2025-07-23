@@ -1,14 +1,10 @@
-# Azure Zoo
+# Harmony City Zoo Park
 
-Take an exciting journey through the Azure Zoo, where we'll explore the fascinating world of Azure Integration Services.
+Harmony City Zoo Park is a community zoo known for its diverse animal habitats. As a park attracting thousands of visitors each week, it offers experiences like 
+animal feedings and interactive exhibits. 
 
-## Azure Services
-
-* Azure Service Bus: Use this for reliable messaging between different parts of the system. For example, when a visitor purchases a ticket online, a message is sent to the visitor management system.
-* Azure Event Grid: Implement event-driven architecture to handle events such as ticket purchases, animal feeding times, and exhibit updates. This allows different services to react to these events in real-time.
-* Azure API Management: Manage and secure APIs that expose functionalities such as ticket booking, exhibit information, and visitor feedback to external systems, such as mobile apps or partner services.
-* Azure Logic Apps: Automate workflows, such as sending ticket confirmation emails, updating exhibit information, and notifying visitors about special events or feeding times.
-* Azure Functions: Use serverless functions to handle specific tasks, like calculating visitor capacity or generating personalized recommendations for exhibits based on visitor preferences.
+The zoo’s visitor management system is an event-driven platform that supports visitor ticketing, exhibit updates, and real-time event notifications. Visitors receive 
+timely updates about feeding times, exhibit changes, and upcoming events through a combination of APIs and messaging services.
 
 ## User Views
 
